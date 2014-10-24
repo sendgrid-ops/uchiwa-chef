@@ -1,15 +1,14 @@
 ---
 driver:
   name: vagrant
+  network:
+  - ['forwarded_port', {guest: 3000, host: 3000, auto_correct: true}]
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
   - name: centos-6.5
-  - name: centos-7.0
-  - name: ubuntu-12.04
-  - name: ubuntu-14.04
 
 suites:
   - name: package
@@ -42,22 +41,23 @@ suites:
       uchiwa:
         api: [
           {
-            name: sensu1,
-            host: api1.example.com,
+            name: SJC Sensu,
+            host: sensu-045.sjc1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           },
           {
-            name: sensu2,
-            host: api2.example.com,
+            name: MDW sensu,
+            host: sensu0001p1mdw1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           }
         ]
         install_method: source
-        version: 0.2.3
+        source_url: 'https://github.com/pauloconnor/uchiwa.git'
+        version: 'stash_messages'
 
   - name: disabled_service
     excludes:
@@ -70,19 +70,21 @@ suites:
       uchiwa:
         api: [
           {
-            name: sensu1,
-            host: api1.example.com,
+            name: SJC Sensu,
+            host: sensu-045.sjc1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           },
           {
-            name: sensu2,
-            host: api2.example.com,
+            name: MDW sensu,
+            host: sensu0001p1mdw1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           }
         ]
-        install_method: package
+        install_method: source
         manage_service: false
+        version: ''
+        source_url: 'https://github.com/pauloconnor/uchiwa.git'
