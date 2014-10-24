@@ -1,0 +1,5 @@
+## 0.5.1
+
+- Trim the kitchen platforms to what we actually use in SG
+- Fix the version attrib in the source suite so it doesn't break things
+- Add port forwarding to make local testing work
