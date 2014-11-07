@@ -18,21 +18,22 @@ suites:
       uchiwa:
         api: [
           {
-            name: sensu1,
-            host: api1.example.com,
+            name: SJC Sensu,
+            host: sensu-045.sjc1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           },
           {
-            name: sensu2,
-            host: api2.example.com,
+            name: MDW sensu,
+            host: sensu0001p1mdw1.sendgrid.net,
             port: 4567,
             ssl: false,
             timeout: 5000
           }
         ]
         install_method: package
+        version: '0.3.2-1'
 
   - name: source
     run_list:
@@ -56,8 +57,8 @@ suites:
           }
         ]
         install_method: source
-        source_url: 'https://github.com/pauloconnor/uchiwa.git'
-        version: 'stash_messages'
+        source_url: 'https://github.com/sensu/uchiwa.git'
+        version: ''
 
   - name: disabled_service
     excludes:
